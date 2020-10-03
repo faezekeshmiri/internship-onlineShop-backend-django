@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users',
     'phonenumber_field',
     'products',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
