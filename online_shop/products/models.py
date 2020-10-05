@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from django.conf import settings
 
 
 class Category(models.Model):
@@ -18,7 +17,7 @@ class Product(models.Model):
     description = models.CharField(max_length=300)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
-    producer = models.ForeignKey(settings.AUTH_USER_MODEL , on_delete=models.CASCADE)
+    producer = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import ShoppingCart, Address
-from .serializers import ShoppingCartSerializer, AddressSerializer, CustomUserSerializer
-from django.conf import settings
+from .models import ShoppingCart, Address, User
+from .serializers import ShoppingCartSerializer, AddressSerializer, UserSerializer
 
 
 class ShoppingCartView(viewsets.ModelViewSet):
@@ -10,11 +9,13 @@ class ShoppingCartView(viewsets.ModelViewSet):
     serializer_class = ShoppingCartSerializer
 
 
-class CustomUserView(viewsets.ModelViewSet):
-    queryset = settings.AUTH_USER_MODEL.objects.all().order_by('date_joined')
-    serializer_class = CustomUserSerializer
+class UserView(viewsets.ModelViewSet):
+    queryset = User.objects.all().order_by('date_joined')
+    serializer_class = UserSerializer
 
 
 class AddressView(viewsets.ModelViewSet):
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
+
+

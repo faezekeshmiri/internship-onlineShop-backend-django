@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import CustomUser, ShoppingCart, Address
+from .models import User, ShoppingCart, Address
 
 
-class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['id', 'url', 'first_name', 'last_name', 'phone', 'email', 'is_staff', 'is_producer', 'is_active', 'date_joined']
 
 
