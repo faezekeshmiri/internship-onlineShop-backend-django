@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Product, Category
+from .models import MyProduct, Category
 from .serializers import ProductSerializer, CategorySerializer
 
 
 class ProductView(viewsets.ModelViewSet):
-    queryset = Product.objects.all().order_by('date')
+    queryset = MyProduct.objects.all().order_by('date')
     serializer_class = ProductSerializer
 
 

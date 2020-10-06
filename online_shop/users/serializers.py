@@ -1,11 +1,5 @@
 from rest_framework import serializers
-from .models import User, ShoppingCart, Address
-
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'url', 'first_name', 'last_name', 'phone', 'email', 'is_staff', 'is_producer', 'is_active', 'date_joined']
+from .models import ShoppingCart, Address
 
 
 class ShoppingCartSerializer(serializers.HyperlinkedModelSerializer):

@@ -1,23 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
-from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
-from django.utils import timezone
-from phonenumber_field.modelfields import PhoneNumberField
-from products.models import Product
-
-
-class User(models.Model):
-    phone = PhoneNumberField(null=False, blank=False, unique=True)
-    is_staff = models.BooleanField(default=False)
-    is_producer = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(default=timezone.now)
-    first_name = models.CharField(max_length=20, default='')
-    last_name = models.CharField(max_length=20, default='')
-
-    def __str__(self):
-        return self.first_name + " " + self.last_name
+from products.models import MyProduct
+from django.conf import settings
 
 
 class Address(models.Model):
@@ -30,9 +14,9 @@ class Address(models.Model):
 
 
 class ShoppingCart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    address = models.ForeignKey(Address, on_delete= models.CASCADE)
-    products = models.ManyToManyField(Product)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    products = models.ManyToManyField(MyProduct)
     discount = models.IntegerField()
 
     def __str__(self):
