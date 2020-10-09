@@ -38,7 +38,7 @@ class MyAccountManager(BaseUserManager):
 
 # Create your models here.
 class Account(AbstractBaseUser):
-    phone = PhoneNumberField(null=False, blank=False, unique=True)
+    phone = models.CharField(max_length=13,null=False, blank=False, unique=True)
     first_name = models.CharField(max_length=20, default='')
     last_name = models.CharField(max_length=20, default='')
     is_staff = models.BooleanField(default=False)

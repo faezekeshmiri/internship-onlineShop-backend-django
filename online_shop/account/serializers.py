@@ -2,10 +2,11 @@ from rest_framework import serializers
 from .models import Account
 
 
-class RegistrationSerializer(serializers.HyperlinkedModelSerializer):
+class RegistrationSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Account
-        fields = ['phone', 'password', 'first_name', 'last_name']
+        fields = ['phone', 'first_name', 'last_name', 'password']
 
         def save(self):
             account = Account(
