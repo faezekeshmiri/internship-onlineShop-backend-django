@@ -18,3 +18,4 @@ class RegistrationSerializer(serializers.ModelSerializer):
             account.set_password(password)
             account.save()
             return account
+
